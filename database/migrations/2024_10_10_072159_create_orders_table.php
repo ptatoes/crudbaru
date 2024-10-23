@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
@@ -21,10 +21,12 @@ return new class extends Migration
             $table->date('date_taken')->nullable(); // Allow date_taken to be nullable
             $table->boolean('laundry_not_taken')->default(false); // Add this for the checkbox
             $table->timestamps();
+
+            // Foreign key constraints
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
-        
     }
-    
 
     /**
      * Reverse the migrations.
