@@ -337,7 +337,7 @@ footer {
 
 .admin-dashboard .navbar .logout-button {
   color: #ffffff;
-  background-color: #e74c3c; /* Red background for logout */
+  background-color: #a2dbea; /* Red background for logout */
   padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
@@ -349,7 +349,7 @@ footer {
 }
 
 .admin-dashboard .navbar .logout-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
+  background-color: #a4cfda; /* Darker red on hover */
 }
 
 .admin-dashboard .container {
@@ -518,6 +518,7 @@ footer {
   width: 100%;
   border-radius: 6px 0 0 6px; /* Rounded corners on the left side */
   height: 40px; /* Set a fixed height */
+  box-sizing: border-box; /* Ensure padding doesn't affect total height */
 }
 
 .admin-customers .search-button {
@@ -526,8 +527,11 @@ footer {
   font-size: 12px;
   border-radius: 0 6px 6px 0; /* Rounded corners on the right side */
   color: white;
-  height: 40px; /* Same height as search input */
+  height: 60px; /* Same height as search input */
+  display: flex; /* Align button text properly */
+  align-items: center; /* Center the text vertically */
 }
+
 
 .admin-customers .add-button-container {
   margin-top: 16px; /* Adjust margin for spacing */
@@ -647,7 +651,7 @@ input[type="text"], input[type="email"] {
   margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #a1c5e2;
-  background-color: #f4f1ea; /* Cream background */
+  background-color: #ffffff; /* Cream background */
   color: #004d99; /* Blue text */
 }
 
@@ -841,7 +845,7 @@ select {
   margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #a1c5e2;
-  background-color: #f4f1ea; /* Cream background */
+  background-color: #ffffff; /* Cream background */
   color: #004d99; /* Blue text */
 }
 
@@ -933,7 +937,7 @@ input[type="email"] {
   margin-top: 8px;
   border-radius: 8px;
   border: 1px solid #a1c5e2;
-  background-color: #f4f1ea; /* Cream background */
+  background-color: #ffffff; /* Cream background */
   color: #004d99; /* Blue text */
 }
 
@@ -1035,7 +1039,7 @@ input[type="email"] {
   font-size: 12px;
   border-radius: 0 6px 6px 0; /* Rounded corners on the right side */
   color: white;
-  height: 40px; /* Same height as search input */
+  height: 60px; /* Same height as search input */
 }
 
 .admin-order-index .add-button-container {
@@ -1345,7 +1349,7 @@ input[type="email"] {
   font-size: 12px;
   border-radius: 0 6px 6px 0; /* Rounded corners on the right side */
   color: rgb(255, 255, 255);
-  height: 40px; /* Same height as search input */
+  height: 60px; /* Same height as search input */
 }
 
 .add-button-container {

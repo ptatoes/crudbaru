@@ -123,7 +123,7 @@
         }
 
         .sub[type="submit"]:hover {
-            background-color: #c0392b;
+            background-color: #7bd0e1;
             transform: translateY(-2px);
         }
 

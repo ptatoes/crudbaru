@@ -83,6 +83,12 @@
             margin-top: 1rem; /* Space above alternate login link */
         }
 
+        .error-message {
+            color: red; /* Red color for error messages */
+            margin-bottom: 1rem; /* Space below error messages */
+            font-size: 14px; /* Font size for error messages */
+        }
+
         @media (max-width: 480px) {
             .registration-container {
                 padding: 1.5rem; /* Less padding on small screens */
@@ -93,6 +99,18 @@
 <body>
     <div class="registration-container">
         <h1>Admin Registration</h1>
+
+        <!-- Display validation errors if any -->
+        @if($errors->any())
+            <div class="error-message">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('admin.register') }}" method="POST">
             @csrf
             <input type="text" name="name" placeholder="Name" required>
@@ -101,6 +119,12 @@
             <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
             <button type="submit">Register</button>
         </form>
+
+        <!-- Display success message if exists -->
+        @if(session('success'))
+            <div class="error-message">{{ session('success') }}</div>
+        @endif
+
         <a href="{{ route('admin.login') }}">Already have an account? Login</a>
         <div class="alternate-login">
             <a href="{{ route('customer.login') }}">Not an admin? Login as a customer</a>

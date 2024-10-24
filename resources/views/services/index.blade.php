@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section>
+<section class="admin-service-index">
     <div class="container mx-auto max-w-screen-xl px-4 lg:px-12">
         <div class="section-container shadow-lg sm:rounded-lg overflow-hidden relative">
 
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Page Title -->
-            <h1 class="page-title">Services</h1>
+            <h1 class="page-title">Laundry Services</h1>
 
             <!-- Warning Messages -->
             @if (session()->has('message'))
@@ -80,7 +80,7 @@
                         @foreach ($services as $service)
                             <tr class="table-row">
                                 <td class="table-data">{{ $service->service_name }}</td>
-                                <td class="table-data">Rp {{ $service->price }}</td>
+                                <td class="table-data">Rp {{ number_format($service->price) }}</td>
                                 <td class="table-actions">
                                     <div class="action-buttons">
                                         <!-- Edit Button -->
@@ -88,13 +88,13 @@
                                             <button type="submit" class="edit-button">Edit</button>
                                         </form>
                                         
-                                        <!-- Delete Button with Confirmation -->
+                                        <!-- Delete Button Form -->
                                         <form action="{{ route('services.destroy', $service->id) }}" method="POST" class="inline-block">
                                             @csrf
                                             @method('DELETE')
                                             <button 
                                                 type="button" 
-                                                onclick="confirmDelete({{ $service->id }})" 
+                                                onclick="openDeleteModal({{ $service->id }})" 
                                                 class="delete-button"
                                             >
                                                 Delete
@@ -117,13 +117,28 @@
     </div>
 </section>
 
-<!-- JavaScript for Delete Confirmation -->
+<!-- JavaScript for Delete Confirmation Modal -->
 <script>
-    function confirmDelete(serviceId) {
-        if (confirm('Are you sure you want to delete this service?')) {
-            document.querySelector(`form[action$="services/${serviceId}"]`).submit();
-        }
+    let serviceToDelete = null; // Variable to hold the service ID for deletion
+    function openDeleteModal(serviceId) {
+        serviceToDelete = serviceId; // Store the service ID
+        document.getElementById('deleteConfirmationModal').style.display = 'flex'; // Show modal
+    }
+
+    function confirmDelete() {
+        document.querySelector(`form[action$="services/${serviceToDelete}"]`).submit(); // Submit the delete form
     }
 </script>
+
+<!-- Modal for Delete Confirmation -->
+<div id="deleteConfirmationModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Are you sure you want to delete this service?</h2>
+        <div class="modal-buttons">
+            <button id="confirmDeleteBtn" onclick="confirmDelete()">Yes, Delete Service</button>
+            <button id="cancelDeleteBtn" onclick="document.getElementById('deleteConfirmationModal').style.display='none'" class="cancel-btn">No, Go Back</button>
+        </div>
+    </div>
+</div>
 
 @endsection

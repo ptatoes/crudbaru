@@ -85,6 +85,12 @@
             margin-top: 1.5rem; /* Space above admin link */
         }
 
+        .error-message {
+            color: red;
+            margin-bottom: 1rem;
+            font-size: 14px;
+        }
+
         @media (max-width: 480px) {
             .login-container {
                 padding: 1.5rem; /* Less padding on small screens */
@@ -95,6 +101,18 @@
 <body>
     <div class="login-container">
         <h1>Customer Login</h1>
+
+        <!-- Display server-side validation errors -->
+        @if($errors->any())
+            <div class="error-message">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('customer.login') }}" method="POST">
             @csrf
             <input type="email" name="email" placeholder="Email" required>

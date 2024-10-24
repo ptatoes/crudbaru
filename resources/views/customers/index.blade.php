@@ -90,13 +90,13 @@
                                             <button type="submit" class="edit-button">Edit</button>
                                         </form>
                                         
-                                        <!-- Delete Button with Confirmation -->
+                                        <!-- Delete Button Form -->
                                         <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" class="inline-block">
                                             @csrf
                                             @method('DELETE')
                                             <button 
                                                 type="button" 
-                                                onclick="confirmDelete({{ $customer->id }})" 
+                                                onclick="openDeleteModal({{ $customer->id }})" 
                                                 class="delete-button"
                                             >
                                                 Delete
@@ -119,12 +119,28 @@
     </div>
 </section>
 
-<!-- JavaScript for Delete Confirmation -->
+<!-- JavaScript for Delete Confirmation Modal -->
 <script>
-    function confirmDelete(customerId) {
-        if (confirm('Are you sure you want to delete this customer?')) {
-            document.querySelector(`form[action$="customers/${customerId}"]`).submit();
-        }
+    let customerToDelete = null; // Variable to hold the customer ID for deletion
+    function openDeleteModal(customerId) {
+        customerToDelete = customerId; // Store the customer ID
+        document.getElementById('deleteConfirmationModal').style.display = 'flex'; // Show modal
+    }
+
+    function confirmDelete() {
+        document.querySelector(`form[action$="customers/${customerToDelete}"]`).submit(); // Submit the delete form
     }
 </script>
+
+<!-- Modal for Delete Confirmation -->
+<div id="deleteConfirmationModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Are you sure you want to delete this customer?</h2>
+        <div class="modal-buttons">
+            <button id="confirmDeleteBtn" onclick="confirmDelete()">Yes, Delete Customer</button>
+            <button id="cancelDeleteBtn" onclick="document.getElementById('deleteConfirmationModal').style.display='none'" class="cancel-btn">No, Go Back</button>
+        </div>
+    </div>
+</div>
+
 @endsection
