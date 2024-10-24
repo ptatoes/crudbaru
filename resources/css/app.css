@@ -527,7 +527,7 @@ footer {
   font-size: 12px;
   border-radius: 0 6px 6px 0; /* Rounded corners on the right side */
   color: white;
-  height: 60px; /* Same height as search input */
+  height: 55px; /* Same height as search input */
   display: flex; /* Align button text properly */
   align-items: center; /* Center the text vertically */
 }
@@ -1039,7 +1039,7 @@ input[type="email"] {
   font-size: 12px;
   border-radius: 0 6px 6px 0; /* Rounded corners on the right side */
   color: white;
-  height: 60px; /* Same height as search input */
+  height: 55px; /* Same height as search input */
 }
 
 .admin-order-index .add-button-container {
@@ -1349,7 +1349,7 @@ input[type="email"] {
   font-size: 12px;
   border-radius: 0 6px 6px 0; /* Rounded corners on the right side */
   color: rgb(255, 255, 255);
-  height: 60px; /* Same height as search input */
+  height: 55px; /* Same height as search input */
 }
 
 .add-button-container {
