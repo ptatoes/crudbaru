@@ -1,8 +1,4 @@
 @extends('layouts.app')
-{{-- 
-<head>
-    @vite(['resources/css/app.css','resources/js/app.js'])
-</head> --}}
 
 @section('content')
 <h1 class="page-title">Edit Customer</h1>
@@ -92,5 +88,4 @@
         editCustomerForm.submit();
     });
 </script>
-
 @endsection

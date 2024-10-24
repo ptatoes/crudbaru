@@ -131,18 +131,7 @@
         background-color: #f1f1f1;
     }
 
-    .sub {
-        background-color: #e74c3c;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        margin-top: 10px;
-        width: 100%;
-        border-radius: 5px;
-        font-weight: 700;
-        transition: background-color 0.3s, transform 0.2s;
-    }
+    
 
     .sub[type="submit"]:hover {
         background-color: #c0392b;

@@ -1,20 +1,4 @@
 @extends('layouts.app')
-{{-- 
-<head>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<!-- Navbar with title included -->
-<header>
-    <h1>Welcome to Our Laundry Service</h1>
-    <nav>
-        <ul>
-            <li><a href="{{ route('customers.index') }}">Customers</a></li>
-            <li><a href="{{ route('orders.index') }}">Orders</a></li>
-            <li><a href="{{ route('services.index') }}">Services</a></li>
-        </ul>
-    </nav>
-</header> --}}
 
 @section('content')
 <!-- Centered title under the navbar -->
@@ -66,7 +50,6 @@
             <input type="date" name="date_taken" id="date_taken" disabled>
         </div>
     </div>
-    
 
     <button type="button" id="submitOrderBtn" class="back-btn">Create Order</button>
 </form>
@@ -184,5 +167,4 @@
         createOrderForm.submit();
     });
 </script>
-
 @endsection

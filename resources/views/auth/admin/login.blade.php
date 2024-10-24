@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #f5f5dc, #d2b48c); /* Light beige to tan gradient */
+            background: linear-gradient(to right, #a0b3c1, #4e7499); /* Light beige to tan gradient */
             color: #333;
             display: flex;
             justify-content: center;
@@ -30,7 +30,7 @@
         h1 {
             margin-bottom: 1.5rem; /* Space below the heading */
             font-size: 26px; /* Slightly larger heading */
-            color: #8B4513; /* SaddleBrown for heading */
+            color: #25138b; /* SaddleBrown for heading */
         }
 
         input[type="email"],
@@ -38,7 +38,7 @@
             width: 100%; /* Full width */
             padding: 1rem; /* Increased padding */
             margin-bottom: 1.5rem; /* Space below input fields */
-            border: 1px solid #d2b48c; /* Tan border */
+            border: 1px solid #8c9fd2; /* Tan border */
             border-radius: 5px; /* Rounded corners */
             font-size: 16px; /* Font size */
             transition: border-color 0.3s; /* Smooth transition */
@@ -46,12 +46,12 @@
 
         input[type="email"]:focus,
         input[type="password"]:focus {
-            border-color: #8B4513; /* SaddleBrown on focus */
+            border-color: #21138b; /* SaddleBrown on focus */
             outline: none; /* Remove outline */
         }
 
         button {
-            background-color: #8B4513; /* SaddleBrown for button */
+            background-color: #2b138b; /* SaddleBrown for button */
             color: white; /* White text */
             border: none; /* Remove border */
             padding: 1rem; /* Increased padding */
@@ -63,12 +63,12 @@
         }
 
         button:hover {
-            background-color: #704214; /* Darker brown on hover */
+            background-color: #251470; /* Darker brown on hover */
             transform: translateY(-2px); /* Slight lift effect */
         }
 
         a {
-            color: #8B4513; /* SaddleBrown for links */
+            color: #19138b; /* SaddleBrown for links */
             text-decoration: none; /* Remove underline */
             margin-top: 1rem; /* Space above links */
             display: block; /* Make links block elements */
@@ -77,7 +77,7 @@
         }
 
         a:hover {
-            color: #704214; /* Darker brown on hover */
+            color: #221470; /* Darker brown on hover */
             text-decoration: underline; /* Underline on hover */
         }
 

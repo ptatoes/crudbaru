@@ -1,20 +1,4 @@
 @extends('layouts.app')
-{{-- 
-<head>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<!-- Navbar with title included -->
-<header>
-    <h1>Welcome to Our Laundry Service</h1>
-    <nav>
-        <ul>
-            <li><a href="{{ route('customers.index') }}">Customers</a></li>
-            <li><a href="{{ route('orders.index') }}">Orders</a></li>
-            <li><a href="{{ route('services.index') }}">Services</a></li>
-        </ul>
-    </nav>
-</header> --}}
 
 @section('content')
 <!-- Centered title under the navbar -->
@@ -75,46 +59,8 @@
         <input type="date" name="date_taken" id="date_taken" value="{{ $order->date_taken }}" required>
     </div>
     
-
     <!-- Update Order Button -->
     <button type="button" id="submitOrderBtn" class="back-btn" onclick="validateForm()">Update Order</button>
-
-    <script>
-        function toggleDateInput() {
-            const checkbox = document.getElementById('pending');
-            const dateInput = document.getElementById('date_taken');
-
-            // Enable or disable the date input based on the checkbox state
-            if (!checkbox.checked) {  // If checkbox is NOT checked
-                dateInput.disabled = false; // Enable date input
-                dateInput.required = true; // Make it required
-            } else {
-                dateInput.disabled = true; // Disable date input when checked
-                dateInput.value = ""; // Clear the date input if checked
-                dateInput.required = false; // Remove the required attribute
-            }
-        }
-
-        // Call this function on page load to set the correct state
-        window.onload = function() {
-            toggleDateInput(); // Set initial state based on checkbox
-        };
-
-        function validateForm() {
-            const dateInput = document.getElementById('date_taken');
-            const checkbox = document.getElementById('pending');
-
-            // Check if the checkbox is NOT checked and the date is empty
-            if (!checkbox.checked && !dateInput.value) {
-                alert("Please enter the Date Taken when Laundry Not Taken Yet is not checked.");
-                return false; // Prevent form submission
-            }
-
-            return true; // Allow form submission if valid
-        }
-
-        // Your existing price calculation logic can stay here
-    </script>
 </form>
 
 <!-- Back Button -->
@@ -142,7 +88,36 @@
 </div>
 
 <script>
-    // Get elements
+    function toggleDateInput() {
+        const checkbox = document.getElementById('pending');
+        const dateInput = document.getElementById('date_taken');
+
+        if (!checkbox.checked) {
+            dateInput.disabled = false;
+            dateInput.required = true;
+        } else {
+            dateInput.disabled = true;
+            dateInput.value = "";
+            dateInput.required = false;
+        }
+    }
+
+    window.onload = function() {
+        toggleDateInput();
+    };
+
+    function validateForm() {
+        const dateInput = document.getElementById('date_taken');
+        const checkbox = document.getElementById('pending');
+
+        if (!checkbox.checked && !dateInput.value) {
+            alert("Please enter the Date Taken when Laundry Not Taken Yet is not checked.");
+            return false;
+        }
+
+        return true;
+    }
+
     const submitOrderBtn = document.getElementById('submitOrderBtn');
     const confirmationModal = document.getElementById('confirmationModal');
     const warningModal = document.getElementById('warningModal');
@@ -154,46 +129,41 @@
     const priceInput = document.getElementById('price');
     const serviceSelect = document.getElementById('service');
 
-    // Function to calculate price based on service price and weight
     function calculatePrice() {
         const selectedService = serviceSelect.options[serviceSelect.selectedIndex];
-        const servicePrice = parseFloat(selectedService.getAttribute('data-price')) || 0; // Get service price
-        const weight = parseFloat(weightInput.value) || 0; // Get weight
-        const totalPrice = servicePrice * weight; // Calculate total price
+        const servicePrice = parseFloat(selectedService.getAttribute('data-price')) || 0;
+        const weight = parseFloat(weightInput.value) || 0;
+        const totalPrice = servicePrice * weight;
 
-        priceInput.value = totalPrice.toFixed(2); // Set the calculated price
+        priceInput.value = totalPrice.toFixed(2);
     }
 
-    // Event listeners to calculate price
     weightInput.addEventListener('input', calculatePrice);
     serviceSelect.addEventListener('change', calculatePrice);
 
-    // Show the confirmation modal or warning modal based on validation
     submitOrderBtn.addEventListener('click', function() {
         if (validateForm()) {
-            confirmationModal.style.display = 'flex'; // Show confirmation modal if form is valid
+            confirmationModal.style.display = 'flex';
         } else {
-            warningModal.style.display = 'flex'; // Show warning modal if form is incomplete
+            warningModal.style.display = 'flex';
         }
     });
 
-    // Hide the confirmation modal when cancel button is clicked
     cancelModalBtn.addEventListener('click', function() {
         confirmationModal.style.display = 'none';
     });
 
-    // Hide the warning modal when close button is clicked
     closeWarningModalBtn.addEventListener('click', function() {
         warningModal.style.display = 'none';
     });
 
-    // Submit the form when confirmation button is clicked
     confirmOrderBtn.addEventListener('click', function() {
         editOrderForm.submit();
     });
 
-    // Calculate initial price on load
     calculatePrice();
 </script>
+
+
 
 @endsection

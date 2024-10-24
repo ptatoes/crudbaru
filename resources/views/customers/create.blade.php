@@ -1,23 +1,9 @@
 @extends('layouts.app')
-{{-- 
-<head>
-    @vite(['resources/css/app.css','resources/js/app.js'])
-</head>
-
-<!-- Navbar with title included -->
-<header>
-    <h1>Welcome to Our Laundry Service</h1>
-    <nav>
-        <ul>
-            <li><a href="{{ route('customers.index') }}">Customers</a></li>
-            <li><a href="{{ route('orders.index') }}">Orders</a></li>
-            <li><a href="{{ route('services.index') }}">Services</a></li>
-        </ul>
-    </nav>
-</header> --}}
 
 @section('content')
 
+<!-- Include the specific CSS file -->
+<link rel="stylesheet" href="{{ asset('css/admin_customer_create.css') }}">
 
 <!-- Centered title under the navbar -->
 <h1 class="page-title">Create New Customer</h1>
@@ -89,11 +75,8 @@
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
 
-        // Check if all fields are filled and email is valid
-        if (name === "" || email === "" || phone === "") {
-            return false;
-        }
-        return true;
+        // Check if all fields are filled
+        return (name !== "" && email !== "" && phone !== "");
     }
 
     // Show the confirmation modal or warning modal based on validation
